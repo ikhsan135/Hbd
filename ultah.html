@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulang Tahun ke-13 Khanza | 12 Januari 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #9d00ff;
+            --accent: #00e5ff;
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --dark: #1a0a1a;
+            --darker: #100510;
+            --text: #ffe0ff;
+            --sidebar: #1a0a1a;
+            --glow-primary: 0 0 clamp(10px, 2vw, 20px) var(--primary);
+            --glow-secondary: 0 0 clamp(10px, 2vw, 20px) var(--secondary);
+            --glow-accent: 0 0 clamp(10px, 2vw, 20px) var(--accent);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at clamp(5%, 10%, 15%) clamp(10%, 20%, 30%), rgba(255, 107, 157, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at clamp(85%, 90%, 95%) clamp(70%, 80%, 90%), rgba(157, 0, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at clamp(50%, 55%, 60%) clamp(30%, 40%, 50%), rgba(0, 229, 255, 0.08) 0%, transparent 30%);
+        }
+
+        /* Music Controls */
+        .music-controls {
+            position: fixed;
+            top: clamp(15px, 2vw, 25px);
+            right: clamp(15px, 2vw, 25px);
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            gap: clamp(8px, 1vw, 12px);
+        }
+
+        .music-btn {
+            background: rgba(255, 107, 157, 0.2);
+            border: clamp(2px, 0.3vw, 3px) solid var(--primary);
+            color: var(--primary);
+            width: clamp(45px, 5vw, 60px);
+            height: clamp(45px, 5vw, 60px);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(clamp(5px, 1vw, 10px));
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 107, 157, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 0 clamp(15px, 2vw, 25px) rgba(255, 107, 157, 0.4);
+        }
+
+        .volume-slider {
+            width: clamp(100px, 12vw, 150px);
+            -webkit-appearance: none;
+            appearance: none;
+            height: clamp(6px, 0.8vw, 10px);
+            background: rgba(255, 107, 157, 0.2);
+            border-radius: clamp(3px, 0.5vw, 5px);
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: clamp(20px, 2.5vw, 30px);
+            height: clamp(20px, 2.5vw, 30px);
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 clamp(10px, 1.5vw, 15px) var(--primary);
+        }
+
+        /* High Score Badge */
+        .high-score-badge {
+            position: fixed;
+            top: clamp(15px, 2vw, 25px);
+            left: clamp(15px, 2vw, 25px);
+            z-index: 2001;
+            background: rgba(157, 0, 255, 0.2);
+            border: clamp(2px, 0.3vw, 3px) solid var(--secondary);
+            color: var(--text);
+            padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 20px);
+            border-radius: clamp(8px, 1vw, 12px);
+            backdrop-filter: blur(clamp(5px, 1vw, 10px));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(3px, 0.5vw, 5px);
+        }
+
+        .high-score-label {
+            font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+            color: var(--accent);
+        }
+
+        .high-score-value {
+            font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: var(--glow-primary);
+        }
+
+        /* Layout dengan Sidebar */
+        .app-container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: clamp(250px, 25vw, 320px);
+            background: rgba(26, 10, 26, 0.95);
+            border-right: clamp(1px, 0.2vw, 3px) solid rgba(255, 107, 157, 0.2);
+            backdrop-filter: blur(clamp(5px, 1vw, 15px));
+            display: flex;
+            flex-direction: column;
+            padding: clamp(10px, 2vw, 30px) 0;
+            box-shadow: clamp(3px, 0.5vw, 10px) 0 clamp(10px, 2vw, 30px) rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 clamp(15px, 2vw, 25px) clamp(15px, 2vw, 25px);
+            border-bottom: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);
+            margin-bottom: clamp(15px, 2vw, 25px);
+        }
+
+        .sidebar-title {
+            font-size: clamp(1.4rem, 2.3vw, 2rem);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--glow-primary);
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
+        }
+
+        .birthday-girl {
+            text-align: center;
+            color: var(--accent);
+            font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+            margin-top: clamp(8px, 1vw, 12px);
+            text-shadow: 0 0 clamp(10px, 1.5vw, 15px) var(--accent);
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            padding: 0 clamp(10px, 1.5vw, 20px);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: clamp(10px, 1.5vw, 20px);
+            padding: clamp(12px, 1.5vw, 18px) clamp(15px, 2vw, 25px);
+            margin: clamp(5px, 0.8vw, 12px) 0;
+            border-radius: clamp(8px, 1vw, 12px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: clamp(1px, 0.1vw, 2px) solid transparent;
+            font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+            font-weight: 500;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 107, 157, 0.1);
+            border-color: rgba(255, 107, 157, 0.3);
+            transform: translateX(clamp(3px, 0.5vw, 8px));
+        }
+
+        .menu-item.active {
+            background: rgba(157, 0, 255, 0.2);
+            border-color: var(--secondary);
+            box-shadow: 0 0 clamp(10px, 1.5vw, 20px) rgba(157, 0, 255, 0.3);
+        }
+
+        .menu-item i {
+            font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+            width: clamp(20px, 2vw, 30px);
+            text-align: center;
+        }
+
+        .menu-item .badge {
+            margin-left: auto;
+            background: var(--accent);
+            color: var(--darker);
+            padding: clamp(2px, 0.3vw, 5px) clamp(6px, 1vw, 12px);
+            border-radius: clamp(8px, 1vw, 15px);
+            font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+            font-weight: bold;
+        }
+
+        .sidebar-footer {
+            padding: clamp(15px, 2vw, 25px);
+            border-top: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .watermark {
+            font-size: clamp(0.85rem, 1vw, 1.1rem);
+            color: var(--primary);
+            text-shadow: var(--glow-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(8px, 1vw, 12px);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: clamp(15px, 2vw, 25px);
+            position: relative;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(clamp(10px, 2vw, 30px)); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Styles */
+        .page-header {
+            text-align: center;
+            margin-bottom: clamp(20px, 3vw, 40px);
+            padding: clamp(15px, 2vw, 25px);
+            background: rgba(26, 10, 26, 0.7);
+            border-radius: clamp(10px, 1.5vw, 20px);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);
+            box-shadow: 0 0 clamp(15px, 2vw, 30px) rgba(255, 107, 157, 0.1);
+        }
+
+        .page-title {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: clamp(10px, 1.5vw, 20px);
+            text-shadow: var(--glow-primary);
+        }
+
+        /* Countdown Styles */
+        .countdown-container {
+            max-width: clamp(300px, 60vw, 800px);
+            margin: 0 auto;
+            padding: clamp(20px, 3vw, 40px);
+            background: rgba(26, 10, 26, 0.7);
+            border-radius: clamp(10px, 1.5vw, 20px);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(157, 0, 255, 0.2);
+            box-shadow: 0 0 clamp(15px, 2vw, 30px) rgba(157, 0, 255, 0.2);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 25px);
+            flex-wrap: wrap;
+            margin: clamp(20px, 3vw, 40px) 0;
+        }
+
+        .countdown-item {
+            background: rgba(16, 5, 16, 0.9);
+            border-radius: clamp(8px, 1vw, 12px);
+            padding: clamp(15px, 2vw, 25px);
+            min-width: clamp(70px, 10vw, 120px);
+            text-align: center;
+            box-shadow: 0 0 clamp(8px, 1vw, 15px) rgba(255, 107, 157, 0.3);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);
+        }
+
+        .countdown-value {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: var(--glow-primary);
+        }
+
+        .countdown-label {
+            font-size: clamp(0.8rem, 1.1vw, 1.1rem);
+            color: var(--text);
+            margin-top: clamp(5px, 0.8vw, 10px);
+        }
+
+        /* Birthday Message */
+        .birthday-message {
+            max-width: clamp(300px, 70vw, 900px);
+            margin: 0 auto;
+            padding: clamp(20px, 3vw, 40px);
+            background: rgba(26, 10, 26, 0.7);
+            border-radius: clamp(10px, 1.5vw, 20px);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(0, 229, 255, 0.2);
+            box-shadow: 0 0 clamp(15px, 2vw, 30px) rgba(0, 229, 255, 0.2);
+            line-height: 1.8;
+            font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+        }
+
+        .message-highlight {
+            color: var(--accent);
+            font-weight: bold;
+            text-shadow: 0 0 clamp(5px, 1vw, 15px) var(--accent);
+        }
+
+        .apology-note {
+            margin-top: clamp(25px, 4vw, 40px);
+            padding: clamp(15px, 2vw, 25px);
+            background: rgba(255, 107, 157, 0.1);
+            border-radius: clamp(8px, 1vw, 12px);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.3);
+            font-style: italic;
+            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+        }
+
+        /* Game Page Normal View */
+        .game-container {
+            max-width: clamp(300px, 80vw, 1000px);
+            margin: 0 auto;
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: clamp(15px, 2vw, 25px);
+            padding: clamp(15px, 2vw, 25px);
+            background: rgba(26, 10, 26, 0.7);
+            border-radius: clamp(10px, 1.5vw, 20px);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);
+            flex-wrap: wrap;
+            gap: clamp(10px, 1.5vw, 20px);
+        }
+
+        .game-stats {
+            display: flex;
+            gap: clamp(10px, 2vw, 25px);
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: clamp(8px, 1.5vw, 15px) clamp(15px, 2vw, 25px);
+            background: rgba(16, 5, 16, 0.9);
+            border-radius: clamp(8px, 1vw, 12px);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);
+            min-width: clamp(70px, 10vw, 120px);
+        }
+
+        .stat-label {
+            font-size: clamp(0.8rem, 1.1vw, 1.1rem);
+            color: var(--text);
+            margin-bottom: clamp(3px, 0.5vw, 8px);
+        }
+
+        .stat-value {
+            font-size: clamp(1.3rem, 2vw, 1.8rem);
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: var(--glow-primary);
+        }
+
+        .timer {
+            color: var(--warning);
+        }
+
+        .game-controls {
+            display: flex;
+            gap: clamp(8px, 1.5vw, 15px);
+        }
+
+        .btn {
+            padding: clamp(10px, 1.5vw, 15px) clamp(20px, 2.5vw, 35px);
+            border: none;
+            border-radius: clamp(6px, 0.8vw, 10px);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 1.1vw, 1.2rem);
+            display: flex;
+            align-items: center;
+            gap: clamp(5px, 0.8vw, 10px);
+            border: clamp(2px, 0.2vw, 3px) solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #ff3d7c);
+            color: var(--darker);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(clamp(-2px, -0.3vw, -3px));
+            box-shadow: 0 0 clamp(15px, 2vw, 25px) rgba(255, 107, 157, 0.6);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff0066, #ff3300);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(clamp(-2px, -0.3vw, -3px));
+            box-shadow: 0 0 clamp(15px, 2vw, 25px) rgba(255, 0, 102, 0.6);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Game Area Normal View */
+        .game-area-normal {
+            position: relative;
+            background: rgba(16, 5, 16, 0.9);
+            border-radius: clamp(10px, 1.5vw, 20px);
+            border: clamp(2px, 0.3vw, 4px) solid rgba(255, 107, 157, 0.2);
+            height: clamp(250px, 50vh, 500px);
+            overflow: hidden;
+            margin-bottom: clamp(20px, 3vw, 40px);
+            touch-action: manipulation;
+        }
+
+        /* FULLSCREEN GAME MODE */
+        .game-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(16, 5, 16, 0.98);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .game-fullscreen.active {
+            display: flex;
+        }
+
+        .fullscreen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: clamp(10px, 2vw, 20px) clamp(15px, 3vw, 40px);
+            background: rgba(26, 10, 26, 0.9);
+            border-bottom: clamp(1px, 0.2vw, 3px) solid rgba(255, 107, 157, 0.3);
+            box-shadow: 0 clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px) rgba(0, 0, 0, 0.5);
+        }
+
+        .fullscreen-stats {
+            display: flex;
+            gap: clamp(15px, 3vw, 40px);
+        }
+
+        .fullscreen-stat {
+            text-align: center;
+            padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: clamp(8px, 1vw, 12px);
+            border: clamp(1px, 0.2vw, 2px) solid rgba(255, 107, 157, 0.3);
+            min-width: clamp(80px, 12vw, 150px);
+        }
+
+        .fullscreen-stat-label {
+            font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+            color: var(--text);
+            margin-bottom: clamp(3px, 0.5vw, 5px);
+        }
+
+        .fullscreen-stat-value {
+            font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: var(--glow-primary);
+        }
+
+        .fullscreen-timer {
+            color: var(--warning);
+        }
+
+        .fullscreen-game-area {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fullscreen-controls {
+            position: absolute;
+            bottom: clamp(15px, 3vw, 30px);
+            right: clamp(15px, 3vw, 30px);
+            display: flex;
+            gap: clamp(8px, 1.5vw, 15px);
+        }
+
+        .fullscreen-btn {
+            padding: clamp(10px, 2vw, 15px) clamp(20px, 3vw, 30px);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: clamp(2px, 0.3vw, 3px) solid var(--primary);
+            border-radius: clamp(8px, 1vw, 12px);
+            cursor: pointer;
+            font-size: clamp(1rem, 1.3vw, 1.4rem);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255, 107, 157, 0.2);
+            transform: translateY(clamp(-3px, -0.5vw, -5px));
+        }
+
+        /* Game Objects */
+        .game-object {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .game-object:active {
+            transform: scale(0.9);
+        }
+
+        .ball {
+            width: clamp(40px, 8vw, 70px);
+            height: clamp(40px, 8vw, 70px);
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--primary), #ff3d7c);
+            box-shadow: var(--glow-primary);
+        }
+
+        .target {
+            width: clamp(50px, 10vw, 90px);
+            height: clamp(50px, 10vw, 90px);
+            border-radius: clamp(10px, 2vw, 20px);
+            background: radial-gradient(circle at 30% 30%, var(--accent), #00a8cc);
+            box-shadow: var(--glow-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 2vw, 2rem);
+            color: white;
+        }
+
+        .score-popup {
+            position: absolute;
+            color: var(--success);
+            font-weight: bold;
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+            text-shadow: 0 0 clamp(5px, 1vw, 10px) var(--success);
+            pointer-events: none;
+            animation: scoreFloat 1s forwards;
+            z-index: 100;
+        }
+
+        @keyframes scoreFloat {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(clamp(-40px, -5vw, -50px)) scale(1.5); opacity: 0; }
+        }
+
+        /* Secrets Section */
+        .secrets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 30vw, 300px), 1fr));
+            gap: clamp(15px, 2vw, 25px);
+            margin-top: clamp(20px, 3vw, 40px);
+        }
+
+        .secret-card {
+            background: rgba(26, 10, 26, 0.7);
+            border-radius: clamp(10px, 1.5vw, 20px);
+            padding: clamp(20px, 2.5vw, 30px);
+            text-align: center;
+            border: clamp(2px, 0.3vw, 3px) solid rgba(255, 170, 0, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .secret-card.unlocked {
+            opacity: 1;
+            border-color: var(--success);
+            box-shadow: 0 0 clamp(15px, 2vw, 25px) rgba(0, 255, 136, 0.3);
+        }
+
+        .secret-icon {
+            font-size: clamp(2rem, 3vw, 3.5rem);
+            margin-bottom: clamp(15px, 2vw, 25px);
+            color: var(--warning);
+        }
+
+        .secret-card.unlocked .secret-icon {
+            color: var(--success);
+        }
+
+        .secret-name {
+            font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+            margin-bottom: clamp(8px, 1vw, 12px);
+            color: var(--warning);
+        }
+
+        .secret-card.unlocked .secret-name {
+            color: var(--success);
+        }
+
+        .secret-desc {
+            font-size: clamp(0.85rem, 1.1vw, 1.1rem);
+            margin-bottom: clamp(10px, 1.5vw, 15px);
+            color: var(--text);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(16, 5, 16, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(clamp(5px, 1vw, 10px));
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, rgba(26, 10, 26, 0.95), rgba(16, 5, 16, 0.95));
+            border-radius: clamp(15px, 2vw, 25px);
+            padding: clamp(25px, 3vw, 50px);
+            max-width: clamp(300px, 50vw, 600px);
+            width: 90%;
+            border: clamp(2px, 0.3vw, 4px) solid var(--primary);
+            box-shadow: 0 0 clamp(30px, 4vw, 60px) rgba(255, 107, 157, 0.3);
+            text-align: center;
+            animation: modalPop 0.5s ease;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-icon {
+            font-size: clamp(3rem, 5vw, 5rem);
+            margin-bottom: clamp(15px, 2vw, 25px);
+            color: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .modal-title {
+            font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: clamp(15px, 2vw, 25px);
+            text-shadow: var(--glow-primary);
+        }
+
+        .modal-message {
+            font-size: clamp(1rem, 1.3vw, 1.3rem);
+            line-height: 1.6;
+            margin-bottom: clamp(20px, 3vw, 35px);
+            color: var(--text);
+        }
+
+        .modal-highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .modal-btn {
+            padding: clamp(12px, 2vw, 15px) clamp(30px, 4vw, 50px);
+            font-size: clamp(1rem, 1.3vw, 1.3rem);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: clamp(8px, 1vw, 12px);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(clamp(-3px, -0.5vw, -5px));
+            box-shadow: 0 0 clamp(20px, 3vw, 35px) rgba(255, 107, 157, 0.5);
+        }
+
+        /* Stats Section */
+        .stats-container {
+            background: rgba(26, 10, 26, 0.7);
+            border-radius: clamp(10px, 1.5vw, 20px);
+            padding: clamp(20px, 3vw, 40px);
+            margin-top: clamp(20px, 3vw, 40px);
+            border: clamp(1px, 0.1vw, 2px) solid rgba(0, 229, 255, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25vw, 250px), 1fr));
+            gap: clamp(15px, 2vw, 25px);
+            margin-top: clamp(15px, 2vw, 25px);
+        }
+
+        .stat-item {
+            background: rgba(16, 5, 16, 0.9);
+            border-radius: clamp(8px, 1vw, 12px);
+            padding: clamp(15px, 2vw, 25px);
+            text-align: center;
+            border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);
+        }
+
+        .stat-item-value {
+            font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: clamp(5px, 0.8vw, 10px);
+            text-shadow: var(--glow-primary);
+        }
+
+        .stat-item-label {
+            font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+            color: var(--text);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .app-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: clamp(1px, 0.2vw, 3px) solid rgba(255, 107, 157, 0.2);
+                padding: clamp(10px, 1.5vw, 20px) 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: clamp(5px, 1vw, 10px);
+            }
+            
+            .menu-item {
+                white-space: nowrap;
+                flex-shrink: 0;
+                padding: clamp(10px, 1.5vw, 15px) clamp(12px, 1.8vw, 20px);
+            }
+            
+            .main-content {
+                height: calc(100vh - clamp(150px, 25vh, 200px));
+            }
+            
+            .music-controls, .high-score-badge {
+                position: absolute;
+                top: clamp(10px, 2vw, 20px);
+            }
+            
+            .music-controls {
+                right: clamp(10px, 2vw, 20px);
+            }
+            
+            .high-score-badge {
+                left: clamp(10px, 2vw, 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .countdown-item {
+                min-width: clamp(60px, 12vw, 100px);
+                padding: clamp(12px, 2vw, 15px);
+            }
+            
+            .game-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .game-stats {
+                justify-content: center;
+            }
+            
+            .game-controls {
+                justify-content: center;
+            }
+            
+            .game-area-normal {
+                height: clamp(200px, 40vh, 400px);
+            }
+            
+            .secrets-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .fullscreen-stats {
+                flex-direction: column;
+                gap: clamp(8px, 2vw, 15px);
+            }
+            
+            .fullscreen-stat {
+                min-width: clamp(60px, 15vw, 120px);
+            }
+            
+            .music-btn {
+                width: clamp(40px, 6vw, 50px);
+                height: clamp(40px, 6vw, 50px);
+            }
+            
+            .volume-slider {
+                width: clamp(80px, 15vw, 120px);
+            }
+            
+            .high-score-badge {
+                padding: clamp(6px, 1vw, 8px) clamp(8px, 1.2vw, 12px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar-title {
+                font-size: clamp(1.2rem, 5vw, 1.8rem);
+            }
+            
+            .birthday-girl {
+                font-size: clamp(0.9rem, 4vw, 1.2rem);
+            }
+            
+            .menu-item {
+                padding: clamp(8px, 3vw, 12px) clamp(10px, 4vw, 15px);
+                font-size: clamp(0.85rem, 4vw, 1rem);
+            }
+            
+            .page-title {
+                font-size: clamp(1.3rem, 6vw, 1.8rem);
+            }
+            
+            .fullscreen-stat {
+                padding: clamp(3px, 2vw, 5px) clamp(5px, 3vw, 10px);
+            }
+            
+            .fullscreen-stat-label {
+                font-size: clamp(0.8rem, 4vw, 1rem);
+            }
+            
+            .fullscreen-stat-value {
+                font-size: clamp(1.2rem, 6vw, 1.8rem);
+            }
+            
+            .high-score-badge {
+                display: none; /* Sembunyikan di mobile sangat kecil */
+            }
+        }
+
+        /* Anti-double-click protection */
+        .click-protection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            display: none;
+        }
+
+        .click-protection.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- High Score Badge -->
+    <div class="high-score-badge">
+        <div class="high-score-label">HIGH SCORE</div>
+        <div class="high-score-value" id="high-score-value">0</div>
+    </div>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <input type="range" min="0" max="1" step="0.1" value="0.5" class="volume-slider" id="volume-slider">
+        <button class="music-btn" id="music-toggle">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">
+                    <i class="fas fa-birthday-cake"></i> Ulang Tahun ke-13
+                </h1>
+                <div class="birthday-girl">
+                    <i class="fas fa-heart"></i> Khanza Adiva Azkadina Satriastuti <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            
+            <div class="sidebar-menu">
+                <div class="menu-item active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Beranda</span>
+                </div>
+                
+                <div class="menu-item" data-page="message">
+                    <i class="fas fa-envelope"></i>
+                    <span>Pesan Spesial</span>
+                </div>
+                
+                <div class="menu-item" data-page="game">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Challenge Game</span>
+                    <span class="badge">BARU</span>
+                </div>
+                
+                <div class="menu-item" data-page="stats">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistik</span>
+                </div>
+                
+                <div class="menu-item" data-page="secrets">
+                    <i class="fas fa-lock"></i>
+                    <span>Rahasia</span>
+                    <span class="badge" id="secrets-count">0/3</span>
+                </div>
+                
+                <div class="menu-item" data-page="about">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Tentang</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="watermark">
+                    <i class="fas fa-code"></i> @ikhsanproject
+                </div>
+                <div style="font-size: clamp(0.7rem, 0.9vw, 0.9rem); color: rgba(255, 224, 255, 0.6); margin-top: clamp(8px, 1vw, 12px);">
+                    Happy 13th Birthday Khanza! 🎂
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Home Page -->
+            <div class="page active" id="home-page">
+                <div class="page-header">
+                    <h2 class="page-title">Selamat Ulang Tahun ke-13!</h2>
+                    <p class="birthday-date" style="color: var(--primary); font-size: clamp(1rem, 1.5vw, 1.5rem);">
+                        <i class="fas fa-calendar-alt"></i> 12 Januari 2026
+                    </p>
+                </div>
+                
+                <div class="countdown-container">
+                    <h3 style="text-align: center; color: var(--primary); margin-bottom: clamp(15px, 2vw, 25px); font-size: clamp(1.2rem, 1.8vw, 1.8rem);">
+                        <i class="fas fa-clock"></i> Menuju Ulang Tahun Khanza
+                    </h3>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="days">0</div>
+                            <div class="countdown-label">Hari</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="hours">0</div>
+                            <div class="countdown-label">Jam</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="minutes">0</div>
+                            <div class="countdown-label">Menit</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="seconds">0</div>
+                            <div class="countdown-label">Detik</div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: clamp(20px, 3vw, 40px); padding: clamp(15px, 2vw, 25px); background: rgba(157, 0, 255, 0.1); border-radius: clamp(8px, 1vw, 12px);">
+                        <p style="color: var(--accent); font-size: clamp(0.9rem, 1.2vw, 1.2rem);">
+                            <i class="fas fa-gift"></i> Mainkan game challenge untuk membuka hadiah spesial!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Page -->
+            <div class="page" id="message-page">
+                <div class="page-header">
+                    <h2 class="page-title"><i class="fas fa-star"></i> Pesan Spesial untuk Khanza</h2>
+                </div>
+                
+                <div class="birthday-message">
+                    <p>Selamat ulang tahun yang ke-13, <span class="message-highlight">Khanza Adiva Azkadina Satriastuti</span>! 🎉🎂</p>
+                    
+                    <p>Hari ini, <span class="message-highlight">12 Januari 2026</span>, adalah hari yang sangat spesial karena ini adalah hari kelahiranmu yang ke-13. Selamat memasuki usia remaja!</p>
+                    
+                    <p>Di usia 13 tahun ini, semoga kamu selalu diberikan kesehatan, kebahagiaan, dan kesuksesan dalam setiap langkah kehidupanmu. Teruslah bermimpi besar dan berusaha untuk meraihnya.</p>
+                    
+                    <p>Jadilah pribadi yang baik, tetap rendah hati, dan selalu bersyukur. Selamat menikmati hari spesialmu! 🎁✨</p>
+                    
+                    <p style="text-align: center; margin-top: clamp(20px, 3vw, 40px); font-size: clamp(1rem, 1.3vw, 1.3rem);">
+                        <span class="message-highlight">Semoga semua harapan dan impianmu menjadi kenyataan!</span>
+                    </p>
+                    
+                    <div class="apology-note">
+                        <p><i class="fas fa-heart" style="color: var(--primary); margin-right: 8px;"></i> 
+                        <strong>Maaf ya Khanza...</strong> Kalo websitenya jelek atau ada yang typo. Aku cuma bisa ngasih yang simple gini. 
+                        Semoga kamu suka meskipun cuma segini yang bisa aku kasih. Happy Birthday lagi ya! 🎈</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: clamp(25px, 4vw, 50px); padding-top: clamp(15px, 2vw, 25px); border-top: clamp(1px, 0.1vw, 2px) solid rgba(0, 229, 255, 0.2);">
+                        <p style="color: var(--primary); font-size: clamp(0.9rem, 1.1vw, 1.1rem);">
+                            <i class="fas fa-heart"></i> Dari yang selalu mendoakan yang terbaik untukmu
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Page Normal View -->
+            <div class="page" id="game-page">
+                <div class="page-header">
+                    <h2 class="page-title"><i class="fas fa-gamepad"></i> Challenge 60 Detik untuk Khanza</h2>
+                </div>
+                
+                <div class="game-container">
+                    <div class="game-header">
+                        <div class="game-stats">
+                            <div class="stat-box">
+                                <div class="stat-label">Waktu</div>
+                                <div class="stat-value timer" id="timer">60</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-label">Skor</div>
+                                <div class="stat-value" id="score">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-label">Level</div>
+                                <div class="stat-value" id="level">1</div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-controls">
+                            <button class="btn btn-primary" id="start-game">
+                                <i class="fas fa-play"></i> Mulai Game
+                            </button>
+                            <button class="btn btn-danger" id="reset-game" disabled>
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="game-area-normal" id="game-area-normal">
+                        <div id="game-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; padding: clamp(15px, 2vw, 25px);">
+                            <h3 style="color: var(--primary); margin-bottom: clamp(10px, 2vw, 20px); font-size: clamp(1.2rem, 1.8vw, 1.8rem);">Challenge 60 Detik</h3>
+                            <p style="margin-bottom: clamp(5px, 1vw, 8px); font-size: clamp(0.9rem, 1.2vw, 1.2rem);">Tangkap bola pink: <span style="color: var(--primary); font-weight: bold;">+2 poin</span></p>
+                            <p style="margin-bottom: clamp(10px, 2vw, 20px); font-size: clamp(0.9rem, 1.2vw, 1.2rem);">Tangkap target biru: <span style="color: var(--accent); font-weight: bold;">+10 poin</span></p>
+                            <p style="color: var(--warning); font-size: clamp(0.9rem, 1.2vw, 1.2rem); font-weight: bold;">Klik "Mulai Game" untuk memulai!</p>
+                        </div>
+                        <div id="game-objects-normal"></div>
+                    </div>
+                    
+                    <div style="background: rgba(26, 10, 26, 0.7); padding: clamp(15px, 2vw, 25px); border-radius: clamp(10px, 1.5vw, 20px); border: clamp(1px, 0.1vw, 2px) solid rgba(0, 229, 255, 0.2); margin-top: clamp(15px, 2vw, 25px);">
+                        <h4 style="color: var(--accent); margin-bottom: clamp(10px, 1.5vw, 15px); text-align: center; font-size: clamp(1rem, 1.3vw, 1.3rem);">
+                            <i class="fas fa-trophy"></i> Rahasia Tersembunyi untuk Khanza
+                        </h4>
+                        <div style="display: flex; justify-content: space-between; text-align: center; flex-wrap: wrap; gap: clamp(5px, 1vw, 10px);">
+                            <div style="flex: 1; min-width: clamp(100px, 20vw, 180px); padding: clamp(5px, 1vw, 10px);">
+                                <div style="color: #cd7f32; font-weight: bold; font-size: clamp(0.9rem, 1.2vw, 1.2rem);">Perunggu</div>
+                                <div style="font-size: clamp(0.8rem, 1vw, 1rem);">Skor 100+</div>
+                            </div>
+                            <div style="flex: 1; min-width: clamp(100px, 20vw, 180px); padding: clamp(5px, 1vw, 10px);">
+                                <div style="color: #c0c0c0; font-weight: bold; font-size: clamp(0.9rem, 1.2vw, 1.2rem);">Perak</div>
+                                <div style="font-size: clamp(0.8rem, 1vw, 1rem);">Skor 300+</div>
+                            </div>
+                            <div style="flex: 1; min-width: clamp(100px, 20vw, 180px); padding: clamp(5px, 1vw, 10px);">
+                                <div style="color: #ffd700; font-weight: bold; font-size: clamp(0.9rem, 1.2vw, 1.2rem);">Emas</div>
+                                <div style="font-size: clamp(0.8rem, 1vw, 1rem);">Skor 1000+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Page -->
+            <div class="page" id="stats-page">
+                <div class="page-header">
+                    <h2 class="page-title"><i class="fas fa-chart-bar"></i> Statistik Game Khanza</h2>
+                </div>
+                
+                <div class="stats-container">
+                    <h3 style="color: var(--primary); margin-bottom: clamp(15px, 2vw, 25px); text-align: center; font-size: clamp(1.3rem, 1.8vw, 1.8rem);">
+                        <i class="fas fa-trophy"></i> Pencapaian Kamu
+                    </h3>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-item-value" id="stat-high-score">0</div>
+                            <div class="stat-item-label">High Score Tertinggi</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-item-value" id="stat-total-games">0</div>
+                            <div class="stat-item-label">Total Game Dimainkan</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-item-value" id="stat-total-score">0</div>
+                            <div class="stat-item-label">Total Skor Keseluruhan</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-item-value" id="stat-secrets-unlocked">0/3</div>
+                            <div class="stat-item-label">Rahasia Terbuka</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: clamp(25px, 4vw, 40px); padding: clamp(15px, 2vw, 25px); background: rgba(255, 107, 157, 0.1); border-radius: clamp(8px, 1vw, 12px); border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.3);">
+                        <h4 style="color: var(--accent); margin-bottom: clamp(10px, 1.5vw, 15px); font-size: clamp(1rem, 1.3vw, 1.3rem);">
+                            <i class="fas fa-info-circle"></i> Tentang Penyimpanan Data
+                        </h4>
+                        <p style="font-size: clamp(0.9rem, 1.1vw, 1.1rem); line-height: 1.7;">
+                            Statistik game kamu disimpan secara lokal di browser ini.<br>
+                            Data akan tetap tersimpan meskipun kamu menutup browser atau mematikan komputer.<br>
+                            <span style="color: var(--warning); font-weight: bold;">Catatan:</span> Data hanya tersimpan di browser ini dan akan hilang jika kamu menghapus data browser.
+                        </p>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: center; gap: clamp(10px, 2vw, 20px); margin-top: clamp(20px, 3vw, 35px);">
+                        <button class="btn btn-danger" id="reset-stats">
+                            <i class="fas fa-trash"></i> Reset Statistik
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secrets Page -->
+            <div class="page" id="secrets-page">
+                <div class="page-header">
+                    <h2 class="page-title"><i class="fas fa-lock-open"></i> Rahasia Tersembunyi untuk Khanza</h2>
+                </div>
+                
+                <div class="secrets-container">
+                    <div class="secret-card" id="secret-1">
+                        <div class="secret-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3 class="secret-name">Rahasia Perunggu</h3>
+                        <p class="secret-desc">Buka dengan mencapai skor 100 dalam game</p>
+                        <p style="color: #cd7f32; font-weight: bold; font-size: clamp(0.9rem, 1.1vw, 1.1rem);">TERKUNCI</p>
+                    </div>
+                    
+                    <div class="secret-card" id="secret-2">
+                        <div class="secret-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 class="secret-name">Rahasia Perak</h3>
+                        <p class="secret-desc">Buka dengan mencapai skor 300 dalam game</p>
+                        <p style="color: #c0c0c0; font-weight: bold; font-size: clamp(0.9rem, 1.1vw, 1.1rem);">TERKUNCI</p>
+                    </div>
+                    
+                    <div class="secret-card" id="secret-3">
+                        <div class="secret-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="secret-name">Rahasia Emas</h3>
+                        <p class="secret-desc">Buka dengan mencapai skor 1000 dalam game</p>
+                        <p style="color: #ffd700; font-weight: bold; font-size: clamp(0.9rem, 1.1vw, 1.1rem);">TERKUNCI</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: clamp(25px, 4vw, 50px); padding: clamp(20px, 3vw, 35px); background: rgba(16, 5, 16, 0.9); border-radius: clamp(10px, 1.5vw, 20px); border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);">
+                    <h3 style="color: var(--primary); margin-bottom: clamp(10px, 1.5vw, 15px); text-align: center; font-size: clamp(1.1rem, 1.5vw, 1.5rem);">
+                        <i class="fas fa-info-circle"></i> Cara Membuka Rahasia
+                    </h3>
+                    <p style="text-align: center; line-height: 1.8; font-size: clamp(0.9rem, 1.2vw, 1.2rem);">
+                        Mainkan <span style="color: var(--accent); font-weight: bold;">Challenge Game</span> dan raih skor tinggi!<br>
+                        Setiap rahasia akan terbuka otomatis saat skormu mencapai target.<br>
+                        <span style="color: var(--warning); font-weight: bold;">Rahasia Emas memberi hak untuk meminta hadiah spesial!</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- About Page -->
+            <div class="page" id="about-page">
+                <div class="page-header">
+                    <h2 class="page-title"><i class="fas fa-info-circle"></i> Tentang Website Ini</h2>
+                </div>
+                
+                <div style="max-width: clamp(300px, 70vw, 900px); margin: 0 auto; padding: clamp(20px, 3vw, 40px); background: rgba(26, 10, 26, 0.7); border-radius: clamp(10px, 1.5vw, 20px); border: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.2);">
+                    <div style="text-align: center; margin-bottom: clamp(20px, 3vw, 40px);">
+                        <div style="font-size: clamp(2rem, 4vw, 4rem); color: var(--primary); margin-bottom: clamp(15px, 2vw, 25px);">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <h3 style="color: var(--accent); margin-bottom: clamp(10px, 1.5vw, 15px); font-size: clamp(1.3rem, 2vw, 2rem);">Ulang Tahun ke-13 Khanza</h3>
+                        <p style="font-size: clamp(0.9rem, 1.2vw, 1.2rem);">Website spesial untuk merayakan ulang tahun ke-13 <span style="color: var(--primary); font-weight: bold;">Khanza Adiva Azkadina Satriastuti</span> pada 12 Januari 2026</p>
+                    </div>
+                    
+                    <div style="margin-bottom: clamp(20px, 3vw, 40px);">
+                        <h4 style="color: var(--primary); margin-bottom: clamp(10px, 1.5vw, 15px); font-size: clamp(1.1rem, 1.5vw, 1.5rem);">Fitur Utama:</h4>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="padding: clamp(8px, 1.2vw, 12px) 0; border-bottom: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.1);">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: clamp(8px, 1vw, 12px);"></i>
+                                <span style="font-size: clamp(0.9rem, 1.1vw, 1.1rem);">Countdown menuju 12 Januari 2026</span>
+                            </li>
+                            <li style="padding: clamp(8px, 1.2vw, 12px) 0; border-bottom: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.1);">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: clamp(8px, 1vw, 12px);"></i>
+                                <span style="font-size: clamp(0.9rem, 1.1vw, 1.1rem);">Pesan ulang tahun spesial untuk Khanza</span>
+                            </li>
+                            <li style="padding: clamp(8px, 1.2vw, 12px) 0; border-bottom: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.1);">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: clamp(8px, 1vw, 12px);"></i>
+                                <span style="font-size: clamp(0.9rem, 1.1vw, 1.1rem);">Challenge game dengan waktu 60 detik</span>
+                            </li>
+                            <li style="padding: clamp(8px, 1.2vw, 12px) 0; border-bottom: clamp(1px, 0.1vw, 2px) solid rgba(255, 107, 157, 0.1);">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: clamp(8px, 1vw, 12px);"></i>
+                                <span style="font-size: clamp(0.9rem, 1.1vw, 1.1rem);">3 rahasia yang bisa dibuka dengan skor tinggi</span>
+                            </li>
+                            <li style="padding: clamp(8px, 1.2vw, 12px) 0;">
+                                <i class="fas fa-check-circle" style="color: var(--success); margin-right: clamp(8px, 1vw, 12px);"></i>
+                                <span style="font-size: clamp(0.9rem, 1.1vw, 1.1rem);">Penyimpanan lokal untuk statistik game</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: clamp(20px, 3vw, 40px); padding: clamp(15px, 2vw, 25px); background: rgba(255, 107, 157, 0.1); border-radius: clamp(8px, 1vw, 12px);">
+                        <h4 style="color: var(--accent); margin-bottom: clamp(10px, 1.5vw, 15px); font-size: clamp(1rem, 1.3vw, 1.3rem);">
+                            <i class="fas fa-heart"></i> Pesan Tambahan
+                        </h4>
+                        <p style="font-size: clamp(0.9rem, 1.1vw, 1.1rem); line-height: 1.7;">
+                            Maaf ya Khanza kalo websitenya jelek atau ada typo. Aku cuma bisa bikin yang sederhana gini. 
+                            Semoga kamu suka dan menghargai usaha kecil ini. Happy 13th Birthday! Semoga semua impianmu tercapai! 🎂🎉
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; padding-top: clamp(15px, 2vw, 25px); border-top: clamp(1px, 0.1vw, 2px) solid rgba(0, 229, 255, 0.2);">
+                        <p style="color: var(--text); font-size: clamp(0.9rem, 1.1vw, 1.1rem);">
+                            Dibuat dengan <i class="fas fa-heart" style="color: var(--primary);"></i> oleh 
+                            <span style="color: var(--primary); font-weight: bold;">@ikhsanproject</span><br>
+                            <span style="color: rgba(255, 224, 255, 0.6); font-size: clamp(0.8rem, 1vw, 1rem);">
+                                Untuk Khanza Adiva Azkadina Satriastuti yang spesial
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN GAME MODE -->
+    <div class="game-fullscreen" id="game-fullscreen">
+        <div class="fullscreen-header">
+            <div class="fullscreen-stats">
+                <div class="fullscreen-stat">
+                    <div class="fullscreen-stat-label">WAKTU</div>
+                    <div class="fullscreen-stat-value fullscreen-timer" id="fullscreen-timer">60</div>
+                </div>
+                <div class="fullscreen-stat">
+                    <div class="fullscreen-stat-label">SKOR</div>
+                    <div class="fullscreen-stat-value" id="fullscreen-score">0</div>
+                </div>
+                <div class="fullscreen-stat">
+                    <div class="fullscreen-stat-label">LEVEL</div>
+                    <div class="fullscreen-stat-value" id="fullscreen-level">1</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="fullscreen-game-area" id="fullscreen-game-area">
+            <div id="fullscreen-game-objects"></div>
+        </div>
+        
+        <div class="fullscreen-controls">
+            <button class="fullscreen-btn" id="exit-fullscreen">
+                <i class="fas fa-times"></i> Keluar
+            </button>
+        </div>
+    </div>
+
+    <!-- Click Protection Layer -->
+    <div class="click-protection" id="click-protection"></div>
+
+    <!-- Modal for Secrets -->
+    <div class="modal-overlay" id="secret-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 class="modal-title" id="modal-title">Selamat Khanza!</h2>
+            <div class="modal-message" id="modal-message">
+                Kamu berhasil membuka sebuah rahasia!
+            </div>
+            <button class="modal-btn" id="modal-ok">OK</button>
+        </div>
+    </div>
+
+    <!-- Modal for 1000+ Score -->
+    <div class="modal-overlay" id="prize-modal" style="display: none;">
+        <div class="modal">
+            <div class="modal-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h2 class="modal-title">LUAR BIASA KAHNZA!</h2>
+            <div class="modal-message">
+                Kamu berhasil mencapai <span class="modal-highlight">skor 1000+</span> dalam 60 detik!<br><br>
+                Sebagai hadiah, kamu berhak meminta hadiah spesial!<br>
+                Kirim permintaanmu via WhatsApp ke:<br>
+                <span class="modal-highlight" style="font-size: clamp(1.1rem, 1.5vw, 1.5rem);">628811745561</span>
+            </div>
+            <button class="modal-btn" id="prize-ok">Mengerti</button>
+        </div>
+    </div>
+
+    <!-- Audio Element for Music -->
+    <audio id="background-music" loop>
+        <source src="https://files.catbox.moe/uusidn.mp3" type="audio/mpeg">
+        <source src="https://files.catbox.moe/uusidn.ogg" type="audio/ogg">
+    </audio>
+
+    <script>
+        // Global game variables
+        let gameState = {
+            active: false,
+            score: 0,
+            time: 60,
+            level: 1,
+            secretsUnlocked: [false, false, false],
+            lastClickTime: 0,
+            clickDelay: 300,
+            gameObjects: [],
+            gameInterval: null,
+            timerInterval: null,
+            isFullscreen: false
+        };
+
+        // Local Storage Data
+        let gameStats = {
+            highScore: 0,
+            totalGames: 0,
+            totalScore: 0,
+            secretsUnlocked: [false, false, false],
+            lastPlayed: null
+        };
+
+        // Music variables
+        let music = {
+            audio: document.getElementById('background-music'),
+            isPlaying: false,
+            volume: 0.5
+        };
+
+        // DOM Elements
+        const pages = {
+            home: document.getElementById('home-page'),
+            message: document.getElementById('message-page'),
+            game: document.getElementById('game-page'),
+            stats: document.getElementById('stats-page'),
+            secrets: document.getElementById('secrets-page'),
+            about: document.getElementById('about-page')
+        };
+
+        const menuItems = document.querySelectorAll('.menu-item');
+        const clickProtection = document.getElementById('click-protection');
+        const gameFullscreen = document.getElementById('game-fullscreen');
+        
+        // Music controls
+        const musicToggle = document.getElementById('music-toggle');
+        const volumeSlider = document.getElementById('volume-slider');
+        
+        // High score badge
+        const highScoreValue = document.getElementById('high-score-value');
+        
+        // Normal view elements
+        const gameAreaNormal = document.getElementById('game-area-normal');
+        const gameObjectsNormal = document.getElementById('game-objects-normal');
+        const gameMessage = document.getElementById('game-message');
+        
+        // Fullscreen view elements
+        const fullscreenGameArea = document.getElementById('fullscreen-game-area');
+        const fullscreenGameObjects = document.getElementById('fullscreen-game-objects');
+        
+        // Game UI Elements
+        const timerElement = document.getElementById('timer');
+        const scoreElement = document.getElementById('score');
+        const levelElement = document.getElementById('level');
+        const startButton = document.getElementById('start-game');
+        const resetButton = document.getElementById('reset-game');
+        const secretsCount = document.getElementById('secrets-count');
+        
+        // Stats UI Elements
+        const statHighScore = document.getElementById('stat-high-score');
+        const statTotalGames = document.getElementById('stat-total-games');
+        const statTotalScore = document.getElementById('stat-total-score');
+        const statSecretsUnlocked = document.getElementById('stat-secrets-unlocked');
+        const resetStatsBtn = document.getElementById('reset-stats');
+        
+        // Fullscreen UI Elements
+        const fullscreenTimer = document.getElementById('fullscreen-timer');
+        const fullscreenScore = document.getElementById('fullscreen-score');
+        const fullscreenLevel = document.getElementById('fullscreen-level');
+        const exitFullscreenBtn = document.getElementById('exit-fullscreen');
+
+        // Modal Elements
+        const secretModal = document.getElementById('secret-modal');
+        const prizeModal = document.getElementById('prize-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const modalOk = document.getElementById('modal-ok');
+        const prizeOk = document.getElementById('prize-ok');
+
+        // Local Storage Functions
+        function loadGameStats() {
+            try {
+                const savedStats = localStorage.getItem('khanzaBirthdayGameStats');
+                if (savedStats) {
+                    const parsed = JSON.parse(savedStats);
+                    gameStats.highScore = parsed.highScore || 0;
+                    gameStats.totalGames = parsed.totalGames || 0;
+                    gameStats.totalScore = parsed.totalScore || 0;
+                    gameStats.secretsUnlocked = parsed.secretsUnlocked || [false, false, false];
+                    gameStats.lastPlayed = parsed.lastPlayed || null;
+                    
+                    // Update game state secrets
+                    gameState.secretsUnlocked = [...gameStats.secretsUnlocked];
+                    
+                    // Update UI
+                    updateStatsUI();
+                    updateSecretsUI();
+                }
+            } catch (error) {
+                console.log('Error loading game stats:', error);
+                // Reset to default if error
+                resetGameStats();
+            }
+        }
+
+        function saveGameStats() {
+            try {
+                // Update stats with current game state
+                if (gameState.score > gameStats.highScore) {
+                    gameStats.highScore = gameState.score;
+                }
+                
+                // Merge secrets unlocked
+                for (let i = 0; i < gameState.secretsUnlocked.length; i++) {
+                    if (gameState.secretsUnlocked[i]) {
+                        gameStats.secretsUnlocked[i] = true;
+                    }
+                }
+                
+                gameStats.lastPlayed = new Date().toISOString();
+                
+                localStorage.setItem('khanzaBirthdayGameStats', JSON.stringify(gameStats));
+                updateStatsUI();
+            } catch (error) {
+                console.log('Error saving game stats:', error);
+            }
+        }
+
+        function updateStatsUI() {
+            // Update high score badge
+            highScoreValue.textContent = gameStats.highScore;
+            
+            // Update stats page
+            statHighScore.textContent = gameStats.highScore;
+            statTotalGames.textContent = gameStats.totalGames;
+            statTotalScore.textContent = gameStats.totalScore;
+            
+            // Count unlocked secrets
+            const unlockedCount = gameStats.secretsUnlocked.filter(Boolean).length;
+            statSecretsUnlocked.textContent = `${unlockedCount}/3`;
+        }
+
+        function updateSecretsUI() {
+            // Update secrets count badge
+            const unlockedCount = gameStats.secretsUnlocked.filter(Boolean).length;
+            secretsCount.textContent = `${unlockedCount}/3`;
+            
+            // Update secret cards
+            for (let i = 0; i < gameStats.secretsUnlocked.length; i++) {
+                if (gameStats.secretsUnlocked[i]) {
+                    const secretCard = document.getElementById(`secret-${i + 1}`);
+                    if (secretCard) {
+                        secretCard.classList.add('unlocked');
+                        const statusText = secretCard.querySelector('p:last-child');
+                        if (statusText) {
+                            statusText.textContent = 'TERBUKA!';
+                            statusText.style.color = '#00ff88';
+                        }
+                    }
+                }
+            }
+        }
+
+        function resetGameStats() {
+            gameStats = {
+                highScore: 0,
+                totalGames: 0,
+                totalScore: 0,
+                secretsUnlocked: [false, false, false],
+                lastPlayed: null
+            };
+            
+            gameState.secretsUnlocked = [false, false, false];
+            
+            localStorage.removeItem('khanzaBirthdayGameStats');
+            updateStatsUI();
+            updateSecretsUI();
+            
+            // Show confirmation
+            alert('Statistik game telah direset!');
+        }
+
+        // Initialize Music
+        function initMusic() {
+            music.audio.volume = music.volume;
+            volumeSlider.value = music.volume;
+            
+            // Try to play music automatically (with user interaction)
+            document.addEventListener('click', function initAudio() {
+                if (!music.isPlaying) {
+                    music.audio.play().then(() => {
+                        music.isPlaying = true;
+                        musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    }).catch(error => {
+                        console.log("Autoplay prevented:", error);
+                    });
+                }
+                document.removeEventListener('click', initAudio);
+            });
+        }
+
+        // Music Controls
+        function toggleMusic() {
+            if (music.isPlaying) {
+                music.audio.pause();
+                musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            } else {
+                music.audio.play();
+                musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+            }
+            music.isPlaying = !music.isPlaying;
+        }
+
+        function updateVolume() {
+            music.volume = volumeSlider.value;
+            music.audio.volume = music.volume;
+        }
+
+        // Navigation System
+        function switchPage(pageId) {
+            // Hide all pages
+            Object.values(pages).forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            if (pages[pageId]) {
+                pages[pageId].classList.add('active');
+            }
+            
+            // Update menu items
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.page === pageId) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Reset game if switching from game page
+            if (pageId !== 'game' && gameState.active) {
+                resetGame();
+            }
+        }
+
+        // Menu item click handlers
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const pageId = this.dataset.page;
+                switchPage(pageId);
+            });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('January 12, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            if (timeLeft < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // Game Functions
+        function startGame() {
+            if (gameState.active) return;
+            
+            // Reset game state
+            gameState.active = true;
+            gameState.score = 0;
+            gameState.time = 60;
+            gameState.level = 1;
+            gameState.gameObjects = [];
+            
+            // Enter fullscreen mode
+            enterFullscreen();
+            
+            // Update UI in both views
+            updateGameUI();
+            startButton.disabled = true;
+            resetButton.disabled = false;
+            
+            // Clear game objects
+            gameObjectsNormal.innerHTML = '';
+            fullscreenGameObjects.innerHTML = '';
+            
+            // Start game loop with updated intervals
+            gameState.gameInterval = setInterval(gameLoop, 250);
+            gameState.timerInterval = setInterval(updateTimer, 1000);
+            
+            // Initial spawn
+            spawnGameObjects();
+        }
+
+        function enterFullscreen() {
+            gameState.isFullscreen = true;
+            gameFullscreen.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function exitFullscreen() {
+            gameState.isFullscreen = false;
+            gameFullscreen.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Reset game when exiting fullscreen
+            resetGame();
+        }
+
+        function resetGame() {
+            // Stop all intervals
+            clearInterval(gameState.gameInterval);
+            clearInterval(gameState.timerInterval);
+            
+            // Save stats if game was active
+            if (gameState.active) {
+                gameStats.totalGames++;
+                gameStats.totalScore += gameState.score;
+                saveGameStats();
+            }
+            
+            // Reset game state
+            gameState.active = false;
+            gameState.score = 0;
+            gameState.time = 60;
+            gameState.level = 1;
+            gameState.gameObjects = [];
+            
+            // Update UI
+            updateGameUI();
+            startButton.disabled = false;
+            resetButton.disabled = true;
+            
+            // Clear game objects
+            gameObjectsNormal.innerHTML = '';
+            fullscreenGameObjects.innerHTML = '';
+            
+            // Show game message in normal view
+            if (gameMessage) {
+                gameMessage.style.display = 'block';
+            }
+            
+            // Exit fullscreen if active
+            if (gameState.isFullscreen) {
+                exitFullscreen();
+            }
+        }
+
+        function updateGameUI() {
+            // Update normal view
+            scoreElement.textContent = gameState.score;
+            timerElement.textContent = gameState.time;
+            levelElement.textContent = gameState.level;
+            
+            // Update fullscreen view
+            fullscreenScore.textContent = gameState.score;
+            fullscreenTimer.textContent = gameState.time;
+            fullscreenLevel.textContent = gameState.level;
+        }
+
+        function updateTimer() {
+            if (!gameState.active) return;
+            
+            gameState.time--;
+            timerElement.textContent = gameState.time;
+            fullscreenTimer.textContent = gameState.time;
+            
+            // Update level based on time
+            if (gameState.time <= 45) gameState.level = 2;
+            if (gameState.time <= 30) gameState.level = 3;
+            if (gameState.time <= 15) gameState.level = 4;
+            levelElement.textContent = gameState.level;
+            fullscreenLevel.textContent = gameState.level;
+            
+            // End game if time runs out
+            if (gameState.time <= 0) {
+                endGame();
+            }
+        }
+
+        function gameLoop() {
+            if (!gameState.active) return;
+            
+            // Remove old objects
+            cleanupGameObjects();
+            
+            // Spawn new objects
+            spawnGameObjects();
+        }
+
+        function spawnGameObjects() {
+            if (!gameState.active) return;
+            
+            // Determine spawn rate based on level
+            let spawnChance;
+            switch(gameState.level) {
+                case 1: spawnChance = 0.3; break;
+                case 2: spawnChance = 0.4; break;
+                case 3: spawnChance = 0.5; break;
+                case 4: spawnChance = 0.6; break;
+                default: spawnChance = 0.3;
+            }
+            
+            // Spawn balls
+            if (Math.random() < spawnChance && gameState.gameObjects.length < 15) {
+                spawnBall();
+            }
+            
+            // Spawn targets (less frequent)
+            if (Math.random() < spawnChance * 0.3 && gameState.gameObjects.length < 8) {
+                spawnTarget();
+            }
+        }
+
+        function spawnBall() {
+            const isFullscreen = gameState.isFullscreen;
+            const container = isFullscreen ? fullscreenGameObjects : gameObjectsNormal;
+            const gameArea = isFullscreen ? fullscreenGameArea : gameAreaNormal;
+            
+            const ball = document.createElement('div');
+            ball.className = 'game-object ball';
+            
+            // Random position
+            const rect = gameArea.getBoundingClientRect();
+            const maxX = rect.width - 70;
+            const maxY = rect.height - 70;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            
+            ball.style.left = `${x}px`;
+            ball.style.top = `${y}px`;
+            
+            // Add click handler with anti-double-click
+            ball.addEventListener('click', (e) => handleObjectClick(e, ball, 2, isFullscreen));
+            
+            container.appendChild(ball);
+            gameState.gameObjects.push({
+                element: ball,
+                type: 'ball',
+                container: container,
+                createdAt: Date.now()
+            });
+        }
+
+        function spawnTarget() {
+            const isFullscreen = gameState.isFullscreen;
+            const container = isFullscreen ? fullscreenGameObjects : gameObjectsNormal;
+            const gameArea = isFullscreen ? fullscreenGameArea : gameAreaNormal;
+            
+            const target = document.createElement('div');
+            target.className = 'game-object target';
+            target.innerHTML = '<i class="fas fa-bullseye"></i>';
+            
+            // Random position
+            const rect = gameArea.getBoundingClientRect();
+            const maxX = rect.width - 90;
+            const maxY = rect.height - 90;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            
+            target.style.left = `${x}px`;
+            target.style.top = `${y}px`;
+            
+            // Add click handler with anti-double-click
+            target.addEventListener('click', (e) => handleObjectClick(e, target, 10, isFullscreen));
+            
+            container.appendChild(target);
+            gameState.gameObjects.push({
+                element: target,
+                type: 'target',
+                container: container,
+                createdAt: Date.now()
+            });
+        }
+
+        function handleObjectClick(event, element, points, isFullscreen) {
+            // Anti-double-click protection
+            const now = Date.now();
+            if (now - gameState.lastClickTime < gameState.clickDelay) {
+                return;
+            }
+            gameState.lastClickTime = now;
+            
+            // Activate click protection
+            clickProtection.classList.add('active');
+            setTimeout(() => {
+                clickProtection.classList.remove('active');
+            }, gameState.clickDelay);
+            
+            if (!gameState.active) return;
+            
+            // Add to score
+            gameState.score += points;
+            updateGameUI();
+            
+            // Show score popup
+            const rect = (isFullscreen ? fullscreenGameArea : gameAreaNormal).getBoundingClientRect();
+            showScorePopup(event.clientX - rect.left, event.clientY - rect.top, `+${points}`, isFullscreen);
+            
+            // Remove object
+            element.style.opacity = '0';
+            element.style.transform = 'scale(0.5)';
+            
+            setTimeout(() => {
+                if (element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
+            }, 300);
+            
+            // Remove from game objects array
+            gameState.gameObjects = gameState.gameObjects.filter(obj => obj.element !== element);
+            
+            // Check for secrets
+            checkSecrets();
+            
+            // Check for 1000+ score
+            if (gameState.score >= 1000 && !gameState.secretsUnlocked[2]) {
+                unlockSecret(2);
+                showPrizeModal();
+            }
+        }
+
+        function showScorePopup(x, y, text, isFullscreen) {
+            const container = isFullscreen ? fullscreenGameObjects : gameObjectsNormal;
+            
+            const popup = document.createElement('div');
+            popup.className = 'score-popup';
+            popup.textContent = text;
+            popup.style.left = `${x}px`;
+            popup.style.top = `${y}px`;
+            
+            container.appendChild(popup);
+            
+            // Remove after animation
+            setTimeout(() => {
+                if (popup.parentNode) {
+                    popup.parentNode.removeChild(popup);
+                }
+            }, 1000);
+        }
+
+        function cleanupGameObjects() {
+            const now = Date.now();
+            gameState.gameObjects = gameState.gameObjects.filter(obj => {
+                // Remove objects older than 3 seconds
+                if (now - obj.createdAt > 3000) {
+                    if (obj.element.parentNode) {
+                        obj.element.style.opacity = '0';
+                        setTimeout(() => {
+                            if (obj.element.parentNode) {
+                                obj.element.parentNode.removeChild(obj.element);
+                            }
+                        }, 300);
+                    }
+                    return false;
+                }
+                return true;
+            });
+        }
+
+        function endGame() {
+            clearInterval(gameState.gameInterval);
+            clearInterval(gameState.timerInterval);
+            gameState.active = false;
+            
+            // Save game stats
+            gameStats.totalGames++;
+            gameStats.totalScore += gameState.score;
+            if (gameState.score > gameStats.highScore) {
+                gameStats.highScore = gameState.score;
+            }
+            saveGameStats();
+            
+            startButton.disabled = false;
+            resetButton.disabled = true;
+            
+            // Show end message in normal view
+            if (gameMessage) {
+                gameMessage.style.display = 'block';
+                gameMessage.innerHTML = `
+                    <h3 style="color: ${gameState.score >= 1000 ? '#00ff88' : '#ffaa00'}; margin-bottom: clamp(10px, 2vw, 20px); font-size: clamp(1.2rem, 1.8vw, 1.8rem);">
+                        Waktu Habis!
+                    </h3>
+                    <p style="font-size: clamp(1rem, 1.3vw, 1.3rem); margin-bottom: clamp(5px, 1vw, 8px);">Skor Akhir: <span style="color: var(--primary);">${gameState.score}</span></p>
+                    <p style="color: var(--text); margin-bottom: clamp(10px, 2vw, 20px); font-size: clamp(0.9rem, 1.2vw, 1.2rem);">
+                        ${gameState.score >= 1000 ? 'LUAR BIASA KAHNZA! Kamu berhak mendapat hadiah!' : 
+                          gameState.score >= 300 ? 'Hampir dapat rahasia emas!' : 
+                          gameState.score >= 100 ? 'Keren! Kamu buka 1 rahasia!' : 
+                          'Coba lagi untuk buka rahasia!'}
+                    </p>
+                    <p style="color: var(--accent); font-size: clamp(0.9rem, 1.2vw, 1.2rem); font-weight: bold;">Klik "Mulai Game" untuk coba lagi!</p>
+                `;
+            }
+            
+            // Clear remaining objects
+            gameObjectsNormal.innerHTML = '';
+            fullscreenGameObjects.innerHTML = '';
+            gameState.gameObjects = [];
+            
+            // Exit fullscreen after a delay
+            setTimeout(() => {
+                if (gameState.isFullscreen) {
+                    exitFullscreen();
+                }
+            }, 3000);
+        }
+
+        function checkSecrets() {
+            // Check bronze secret (100 points)
+            if (gameState.score >= 100 && !gameState.secretsUnlocked[0]) {
+                unlockSecret(0);
+            }
+            
+            // Check silver secret (300 points)
+            if (gameState.score >= 300 && !gameState.secretsUnlocked[1]) {
+                unlockSecret(1);
+            }
+        }
+
+        function unlockSecret(secretIndex) {
+            gameState.secretsUnlocked[secretIndex] = true;
+            gameStats.secretsUnlocked[secretIndex] = true;
+            
+            // Update secret card
+            const secretCard = document.getElementById(`secret-${secretIndex + 1}`);
+            secretCard.classList.add('unlocked');
+            
+            // Update badges
+            const unlockedCount = gameState.secretsUnlocked.filter(Boolean).length;
+            secretsCount.textContent = `${unlockedCount}/3`;
+            
+            // Save to local storage
+            saveGameStats();
+            
+            // Show modal based on secret
+            let title, message;
+            switch(secretIndex) {
+                case 0:
+                    title = "Rahasia Perunggu Terbuka!";
+                    message = "Kamu berhasil mencapai <span class='modal-highlight'>skor 100+</span>!<br>Ini adalah awal yang bagus Khanza!";
+                    break;
+                case 1:
+                    title = "Rahasia Perak Terbuka!";
+                    message = "Kamu berhasil mencapai <span class='modal-highlight'>skor 300+</span>!<br>Kamu benar-benar hebat Khanza!";
+                    break;
+                case 2:
+                    title = "RAHASIA EMAS TERBUKA!";
+                    message = "Kamu berhasil mencapai <span class='modal-highlight'>skor 1000+</span>!<br>Ini luar biasa Khanza! Kamu berhak mendapat hadiah spesial!";
+                    break;
+            }
+            
+            modalTitle.textContent = title;
+            modalMessage.innerHTML = message;
+            secretModal.style.display = 'flex';
+            
+            // Update secret card text
+            const statusText = secretCard.querySelector('p:last-child');
+            if (statusText) {
+                statusText.textContent = 'TERBUKA!';
+                statusText.style.color = '#00ff88';
+            }
+        }
+
+        function showPrizeModal() {
+            prizeModal.style.display = 'flex';
+        }
+
+        // Event Listeners
+        startButton.addEventListener('click', startGame);
+        resetButton.addEventListener('click', resetGame);
+        exitFullscreenBtn.addEventListener('click', exitFullscreen);
+        modalOk.addEventListener('click', () => {
+            secretModal.style.display = 'none';
+        });
+        prizeOk.addEventListener('click', () => {
+            prizeModal.style.display = 'none';
+        });
+        resetStatsBtn.addEventListener('click', resetGameStats);
+
+        // Music event listeners
+        musicToggle.addEventListener('click', toggleMusic);
+        volumeSlider.addEventListener('input', updateVolume);
+
+        // Initialize
+        loadGameStats();
+        initMusic();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Prevent double click on game areas
+        [gameAreaNormal, fullscreenGameArea].forEach(area => {
+            area.addEventListener('dblclick', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+            
+            area.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+        });
+
+        // Mobile touch optimizations
+        [gameAreaNormal, fullscreenGameArea].forEach(area => {
+            area.addEventListener('touchstart', (e) => {
+                if (e.touches.length > 1) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
+
+        // Performance optimization: Reduce animations when tab is not visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && gameState.active) {
+                // Pause game when tab is not visible
+                clearInterval(gameState.gameInterval);
+                clearInterval(gameState.timerInterval);
+            } else if (!document.hidden && gameState.active) {
+                // Resume game when tab becomes visible
+                gameState.gameInterval = setInterval(gameLoop, 250);
+                gameState.timerInterval = setInterval(updateTimer, 1000);
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (gameState.active && gameState.isFullscreen) {
+                // Re-center objects on resize
+                gameState.gameObjects.forEach(obj => {
+                    if (obj.element.parentNode) {
+                        const gameArea = gameState.isFullscreen ? fullscreenGameArea : gameAreaNormal;
+                        const rect = gameArea.getBoundingClientRect();
+                        const maxX = rect.width - (obj.type === 'ball' ? 70 : 90);
+                        const maxY = rect.height - (obj.type === 'ball' ? 70 : 90);
+                        
+                        // Keep object within bounds
+                        let x = parseFloat(obj.element.style.left);
+                        let y = parseFloat(obj.element.style.top);
+                        
+                        if (x > maxX) x = maxX;
+                        if (y > maxY) y = maxY;
+                        
+                        obj.element.style.left = `${x}px`;
+                        obj.element.style.top = `${y}px`;
+                    }
+                });
+            }
+        });
+
+        // Auto-save when leaving page
+        window.addEventListener('beforeunload', () => {
+            if (gameState.active) {
+                saveGameStats();
+            }
+        });
+    </script>
+</body>
+</html>
